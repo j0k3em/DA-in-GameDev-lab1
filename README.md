@@ -43,7 +43,7 @@
 - Запустил Anaconda Prompt от имени администратора и скачал все необходимые библиотеки для работы ![image](https://user-images.githubusercontent.com/103302913/198292087-7c17d6a9-3e97-4e4e-b7bf-adb2d235e4b4.png)
 - Создал на сцене куб, сферу и плоскость. Также создал скрипт и подключил его к сфере. ![image](https://user-images.githubusercontent.com/103302913/198292917-653ef615-3433-4d51-8b2a-b5583031811d.png)
 - В скрипте RollerAgent.cs написал код:
-```python
+```c#
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
