@@ -38,10 +38,8 @@
 Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
 
 ## Задание 1
-- Написал в Google Colab программу "Hello world" на питоне и запустил её. ![Скриншот 27-09-2022 171828](https://user-images.githubusercontent.com/103302913/192529245-dc1cbf18-e791-4a11-beef-2c0b0ae470e8.jpg)
-- Сохранил программу на свой Google Диск. ![Скриншот 27-09-2022 172105](https://user-images.githubusercontent.com/103302913/192529511-7120b1e3-c649-4246-80c8-492697a4c6f9.jpg)
-- Настроил VS Code под работу с Unity, создал C# скрипт и написал программу "Hello World" ![Скриншот 27-09-2022 173236](https://user-images.githubusercontent.com/103302913/192530106-edff7a4d-448e-48ed-8692-2e855f41f9e4.jpg)
-- Запустил проект на Unity с выводом на экран программы "Hello World" ![Скриншот 27-09-2022 173639](https://user-images.githubusercontent.com/103302913/192533460-1ad9b91a-08aa-45a6-892f-c5a7dc1e4482.jpg)
+![image](https://user-images.githubusercontent.com/103302913/198290497-ad55232b-87cd-4795-aa99-3578ba2c0ec1.png)
+
 
 
 
