@@ -38,7 +38,73 @@
 Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
 
 ## Задание 1
-![image](https://user-images.githubusercontent.com/103302913/198290497-ad55232b-87cd-4795-aa99-3578ba2c0ec1.png)
+- Создал 3d проект в Unity ![image](https://user-images.githubusercontent.com/103302913/198290497-ad55232b-87cd-4795-aa99-3578ba2c0ec1.png)
+- Добавил .json файлы ![image](https://user-images.githubusercontent.com/103302913/198291444-47158570-9e7a-43af-b80b-c195b1c83b26.png)
+- Запустил Anaconda Prompt от имени администратора и скачал все необходимые библиотеки для работы ![image](https://user-images.githubusercontent.com/103302913/198292087-7c17d6a9-3e97-4e4e-b7bf-adb2d235e4b4.png)
+- Создал на сцене куб, сферу и плоскость. Также создал скрипт и подключил его к сфере. ![image](https://user-images.githubusercontent.com/103302913/198292917-653ef615-3433-4d51-8b2a-b5583031811d.png)
+- В скрипте RollerAgent.cs написал код:
+```python
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+
+public class RollerAgent : Agent
+{
+
+    Rigidbody rBody;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rBody = GetComponent<Rigidbody>();
+    }
+
+    public Transform Target;
+    public override void OnEpisodeBegin()
+    {
+        if (this.transform.localPosition.y < 0)
+        {
+            this.rBody.angularVelocity = Vector3.zero;
+            this.rBody.velocity = Vector3.zero;
+            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+        }
+
+        Target.localPosition = new Vector3(Random.value * 8-4, 0.5f,Random.value * 8-4);
+    }
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(rBody.velocity.x);
+        sensor.AddObservation(rBody.velocity.z);
+    }
+    public float forceMultiplier = 10;
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+    {
+        Vector3 controlSignal = Vector3.zero;
+        controlSignal.x = actionBuffers.ContinuousActions[0];
+        controlSignal.z = actionBuffers.ContinuousActions[1];
+        rBody.AddForce(controlSignal * forceMultiplier);
+
+        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+
+        if(distanceToTarget < 1.42f)
+        {
+            SetReward(1.0f);
+            EndEpisode();
+        }
+        else if (this.transform.localPosition.y < 0)
+        {
+            EndEpisode();
+        }
+    }
+}
+```
+
+
+
 
 
 
