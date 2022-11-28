@@ -38,9 +38,8 @@
 Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
 
 ## Задание 1
-- Создал новый 3d проект. В нём создал пустой объект.
-![image](https://user-images.githubusercontent.com/103302913/204284487-b4d58097-76ee-4f8d-89d1-b1af33820f74.png)
-- Закинул C#-скрипт в пустой объект:
+- Создал новый 3d проект. В нём создал пустой объект. ![image](https://user-images.githubusercontent.com/103302913/204284487-b4d58097-76ee-4f8d-89d1-b1af33820f74.png)
+- Прикрепил C#-скрипт в пустой объект:
 ```C#
 using System.Collections;
 using System.Collections.Generic;
@@ -143,9 +142,18 @@ public class Perceptron : MonoBehaviour {
 	}
 }
 ```
-
-
-
+- Настроил массив ts на логический оператор OR ![image](https://user-images.githubusercontent.com/103302913/204286233-942e83c7-573e-4213-bd42-9c0814184009.png)
+- Запустил программу и получил следующие значения: ![image](https://user-images.githubusercontent.com/103302913/204286772-f22d4d75-488f-4db8-8db5-f4487f806681.png)
+![image](https://user-images.githubusercontent.com/103302913/204286894-9447e215-1851-4ff4-8909-64b248126fe5.png)
+![image](https://user-images.githubusercontent.com/103302913/204287748-da03d77d-9d3d-4d36-94f4-2e9e647b95e7.png)
+За 8 итераций перцептрон успел научиться т.к. TotalError снижается до 0. Тесты метода CalcOutput выдают результат работы перцептрона.
+- Настроил массив ts на логический оператор AND ![image](https://user-images.githubusercontent.com/103302913/204290207-b76804aa-98af-4c99-813f-2d9f96aa5847.png)
+![image](https://user-images.githubusercontent.com/103302913/204290499-d1775c93-66f3-4f74-8e5f-450f2bc480c6.png)
+За 8 итераций перцептрон успел научиться, но не так быстро как с OR.
+- Настроил массив ts на логический оператор NAND ![image](https://user-images.githubusercontent.com/103302913/204291070-b59e25da-88ba-46ad-95e9-321506e7d8f4.png)
+За 8 итераций перцептрон успевает научиться.
+- Настроил массив ts на логический оператор XOR ![image](https://user-images.githubusercontent.com/103302913/204291395-a21c37e9-b406-474a-a5f6-456023ce3f6f.png)
+С увеличением итераций увеличивается TotalError. Перцептрон не обучается и работает некорректно. 
 
 
 ## Задание 2
