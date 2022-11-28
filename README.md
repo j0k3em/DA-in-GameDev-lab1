@@ -160,43 +160,17 @@ public class Perceptron : MonoBehaviour {
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
 Ход работы:
 - Для составления графиков работы перцептрона буду проводить 5 попыток по 8 итераций для каждого оператора.
-- Для оператора OR ![image](https://user-images.githubusercontent.com/103302913/204297037-5d031130-003d-4257-b580-5c9ff67e3860.png)
-- Для оператора AND 
-- Для оператора NAND
-- Для оператора XOR
+- Для оператора OR ![image](https://user-images.githubusercontent.com/103302913/204303078-70e61898-d73c-4b55-b880-98704e042a46.png)
+- Для оператора AND ![image](https://user-images.githubusercontent.com/103302913/204302084-250302fa-46b3-45e1-8346-953c6bf565ad.png)
+- Для оператора NAND ![image](https://user-images.githubusercontent.com/103302913/204302372-892ff014-2e68-47bd-b3b7-5e3367a6c4d9.png)
+- Для оператора XOR ![image](https://user-images.githubusercontent.com/103302913/204302999-ae16e103-c15c-4257-9614-72891529a299.png)
+ Количество эпох обучения зависит от операции. При операции OR ошибок нет уже на 6 итерации, у AND и NAND - на 7.
 
 ## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра. 
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
-
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
-
-```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
-```
 
 ## Выводы
 
-Выполнил 1 и 2 задания, написав две простые программы "Hello World" на Python и Unity. Также познакомился с Google Colab, выполнив работу с алгоритмом линейной регрессии. 
+В ходе лабораторной работы познакомился с перцептроном. Смог реализовать логические операции: OR, AND, NAND. Также составил графики из пяти попыток для оценки обучения перцептрона в каждой операции.
 
 | Plugin | README |
 | ------ | ------ |
