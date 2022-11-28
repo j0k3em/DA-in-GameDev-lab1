@@ -38,10 +38,111 @@
 Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
 
 ## Задание 1
-- Написал в Google Colab программу "Hello world" на питоне и запустил её. ![Скриншот 27-09-2022 171828](https://user-images.githubusercontent.com/103302913/192529245-dc1cbf18-e791-4a11-beef-2c0b0ae470e8.jpg)
-- Сохранил программу на свой Google Диск. ![Скриншот 27-09-2022 172105](https://user-images.githubusercontent.com/103302913/192529511-7120b1e3-c649-4246-80c8-492697a4c6f9.jpg)
-- Настроил VS Code под работу с Unity, создал C# скрипт и написал программу "Hello World" ![Скриншот 27-09-2022 173236](https://user-images.githubusercontent.com/103302913/192530106-edff7a4d-448e-48ed-8692-2e855f41f9e4.jpg)
-- Запустил проект на Unity с выводом на экран программы "Hello World" ![Скриншот 27-09-2022 173639](https://user-images.githubusercontent.com/103302913/192533460-1ad9b91a-08aa-45a6-892f-c5a7dc1e4482.jpg)
+- Создал новый 3d проект. В нём создал пустой объект.
+![image](https://user-images.githubusercontent.com/103302913/204284487-b4d58097-76ee-4f8d-89d1-b1af33820f74.png)
+- Закинул C#-скрипт в пустой объект:
+```C#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class TrainingSet
+{
+	public double[] input;
+	public double output;
+}
+
+public class Perceptron : MonoBehaviour {
+
+	public TrainingSet[] ts;
+	double[] weights = {0,0};
+	double bias = 0;
+	double totalError = 0;
+
+	double DotProductBias(double[] v1, double[] v2) 
+	{
+		if (v1 == null || v2 == null)
+			return -1;
+	 
+		if (v1.Length != v2.Length)
+			return -1;
+	 
+		double d = 0;
+		for (int x = 0; x < v1.Length; x++)
+		{
+			d += v1[x] * v2[x];
+		}
+
+		d += bias;
+	 
+		return d;
+	}
+
+	double CalcOutput(int i)
+	{
+		double dp = DotProductBias(weights,ts[i].input);
+		if(dp > 0) return(1);
+		return (0);
+	}
+
+	void InitialiseWeights()
+	{
+		for(int i = 0; i < weights.Length; i++)
+		{
+			weights[i] = Random.Range(-1.0f,1.0f);
+		}
+		bias = Random.Range(-1.0f,1.0f);
+	}
+
+	void UpdateWeights(int j)
+	{
+		double error = ts[j].output - CalcOutput(j);
+		totalError += Mathf.Abs((float)error);
+		for(int i = 0; i < weights.Length; i++)
+		{			
+			weights[i] = weights[i] + error*ts[j].input[i]; 
+		}
+		bias += error;
+	}
+
+	double CalcOutput(double i1, double i2)
+	{
+		double[] inp = new double[] {i1, i2};
+		double dp = DotProductBias(weights,inp);
+		if(dp > 0) return(1);
+		return (0);
+	}
+
+	void Train(int epochs)
+	{
+		InitialiseWeights();
+		
+		for(int e = 0; e < epochs; e++)
+		{
+			totalError = 0;
+			for(int t = 0; t < ts.Length; t++)
+			{
+				UpdateWeights(t);
+				Debug.Log("W1: " + (weights[0]) + " W2: " + (weights[1]) + " B: " + bias);
+			}
+			Debug.Log("TOTAL ERROR: " + totalError);
+		}
+	}
+
+	void Start () {
+		Train(8);
+		Debug.Log("Test 0 0: " + CalcOutput(0,0));
+		Debug.Log("Test 0 1: " + CalcOutput(0,1));
+		Debug.Log("Test 1 0: " + CalcOutput(1,0));
+		Debug.Log("Test 1 1: " + CalcOutput(1,1));		
+	}
+	
+	void Update () {
+		
+	}
+}
+```
 
 
 
